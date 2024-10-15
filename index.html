@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+    <img class="elipse1" src="./assets/elipse1.png" alt="">
+    <div class="banner">
+       <input id="inter" class="srch" type="text" placeholder="Искать: 1win, Olimp">
+       <button id="alls" class="sch">все</button>
+       <button id="all" class="schs">отменить</button>
+    </div>
+    <div id="f" class="finder_content">
+        <div class="finder">
+            <div id="fonbet" class="item">
+                <img class="lg" src="./assets/loger/fonbt.png" alt="">
+                <div class="itemtext">FONBET</div>
+                <div class="ratetext">^5+</div>
+                <button class="play">Играть</button>
+            </div>
+            <div id="pari" class="item">
+                <img class="lg" src="./assets/loger/parim.png" alt="">
+                <div class="itemtext">PARI</div>
+                <div class="ratetext">^5+</div>
+                <button class="play">Играть</button>
+            </div>
+            <div id="bb" class="item">
+                <img class="lg" src="./assets/loger/bb.png" alt="">
+                <div class="itemtext">BET BOOM</div>
+                <div class="ratetext">^4+</div>
+                <button class="play">Играть</button>
+            </div>
+            <div id="liga" class="item">
+                <img class="lg" src="./assets/loger/liga.png" alt="">
+                <div class="itemtext">LIGA STAVOK</div>
+                <div class="ratetext">^4+</div>
+                <button class="play">Играть</button>
+            </div>
+            <div id="marat" class="item">
+                <img class="lg" src="./assets/loger/marat.png" alt="">
+                <div class="itemtext">MARATHON BET</div>
+                <div class="ratetext">^4+</div>
+                <button class="play">Играть</button>
+            </div>
+            <div id="leon" class="item">
+                <img class="lg" src="./assets/loger/leon.png" alt="">
+                <div class="itemtext">LEON</div>
+                <div class="ratetext">^5+</div>
+                <button class="play">Играть</button>
+            </div>
+        </div>
+        <style>
+            .finder{
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                z-index: 4;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.674);
+                backdrop-filter: blur(5px);
+            }
+            .play{
+                width: 80px;
+                height: 35px;
+                background-color: rgb(58, 58, 58);
+                border: none;
+                color: rgb(255, 255, 255);
+                font-weight: bold;
+                border-radius: 10px;
+                margin-left: -50px;
+                border: 1px solid rgba(255, 255, 255, 0.279);
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+            .ratetext{
+                width: 100px;
+                height: 20px;
+                color: rgb(17, 206, 0);
+                font-weight: bold;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+            .itemtext{
+                width: 100px;
+                height: 20px;
+                color: rgb(255, 255, 255);
+                font-weight: bold;
+                margin-left: 10px;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+            .lg{
+                width: 40px;
+                height: 40px;
+                margin-left: 10px;
+                border-radius: 100px;
+                border: 1px solid rgb(255, 255, 255);
+            }
+            .item{
+                display: flex;
+                align-items: center;
+                flex-direction: row;
+                width: 88%;
+                height: 60px;
+                border-radius: 35px;
+                margin-top: 5px;
+                margin-left: 10px;
+                border: 1px solid rgb(33, 33, 33);
+                background-color: rgb(24, 24, 24);
+            }
+        </style> 
+    </div>
+    <div class="text">Топ букмекеров</div>
+    <div class="scrollbar">
+         <img id="q" src="./assets/items/FonBet.png" alt="" class="one el0">
+         <img id="p" src="./assets/items/Pari.png" alt="" class="one el0 w">
+         <img id="o" src="./assets/items/Olimp.png" alt="" class="one el0 e">
+         <img id="b" src="./assets/items/BetBoom.png" alt="" class="one el0 ">
+         <img id="l" src="./assets/items/LigaStavok.png" alt="" class="one el0">
+         <img id="m" src="./assets/items/MaratonBet.png" alt="" class="one el0">
+         <img id="le" src="./assets/items/Leon.png" alt="" class="one el0">
+    </div>
+    <div class="text">Топ бонусов</div>
+    <div class="scrollbar1">
+         <img src="./assets/bonused/OneWin.png" alt="" class="one el1">
+         <img src="./assets/bonused/Pinco.png" alt="" class="one el1">
+         <img src="./assets/bonused/MostBet.png" alt="" class="one el1">
+         <img src="./assets/bonused/OneX.png" alt="" class="one el1">
+    </div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyA6SW7DyUQBU501-QPkmhHYX2hsIkoKrsA",
+            authDomain: "prominiappsbase.firebaseapp.com",
+            databaseURL: "https://prominiappsbase-default-rtdb.firebaseio.com",
+            projectId: "prominiappsbase",
+            storageBucket: "prominiappsbase.appspot.com",
+            messagingSenderId: "871832994147",
+            appId: "1:871832994147:web:f059db28198fbf665c5356",
+            measurementId: "G-F3GZF1CNJH"
+        };
+        let fonBetData;
+
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+        const dbRef = ref(database, 'fonbet'); 
+        let fonBeT = document.getElementById("q");
+        onValue(dbRef, (snapshot) => {
+            const data = snapshot.val();
+            console.log(data); 
+            fonBetData = data;
+            fonBeT.addEventListener("click", ()=> window.location.replace(fonBetData));
+        }, (error) => {
+            console.error("ERROR: ", error);
+            document.getElementById('output').innerText = "Ошибка при загрузке данных.";
+        });
+
+        const app1 = initializeApp(firebaseConfig);
+        const database1 = getDatabase(app);
+        const dbRef1 = ref(database, 'pari'); 
+        let fonBeT1 = document.getElementById("p");
+        onValue(dbRef, (snapshot) => {
+            const data = snapshot.val();
+            console.log(data); 
+            fonBetData = data;
+            fonBeT1.addEventListener("click", ()=> window.location.replace(fonBetData));
+        }, (error) => {
+            console.error("ERROR: ", error);
+            document.getElementById('output').innerText = "Ошибка при загрузке данных.";
+        });
+
+        const app2 = initializeApp(firebaseConfig);
+        const database2 = getDatabase(app);
+        const dbRef2 = ref(database, 'olimp'); 
+        let fonBeT2 = document.getElementById("o");
+        onValue(dbRef, (snapshot) => {
+            const data = snapshot.val();
+            console.log(data); 
+            fonBetData = data;
+            fonBeT2.addEventListener("click", ()=> window.location.replace(fonBetData));
+        }, (error) => {
+            console.error("ERROR: ", error);
+            document.getElementById('output').innerText = "Ошибка при загрузке данных.";
+        });
+
+        const app3 = initializeApp(firebaseConfig);
+        const database3 = getDatabase(app);
+        const dbRef3 = ref(database, 'betboom'); 
+        let fonBeT3 = document.getElementById("b");
+        onValue(dbRef, (snapshot) => {
+            const data = snapshot.val();
+            console.log(data); 
+            fonBetData = data;
+            fonBeT3.addEventListener("click", ()=> window.location.replace(fonBetData));
+        }, (error) => {
+            console.error("ERROR: ", error);
+            document.getElementById('output').innerText = "Ошибка при загрузке данных.";
+        });
+
+        const app4 = initializeApp(firebaseConfig);
+        const database4 = getDatabase(app);
+        const dbRef4 = ref(database, 'liga'); 
+        let fonBeT4 = document.getElementById("l");
+        onValue(dbRef, (snapshot) => {
+            const data = snapshot.val();
+            console.log(data); 
+            fonBetData = data;
+            fonBeT4.addEventListener("click", ()=> window.location.replace(fonBetData));
+        }, (error) => {
+            console.error("ERROR: ", error);
+            document.getElementById('output').innerText = "Ошибка при загрузке данных.";
+        });
+
+        const app5 = initializeApp(firebaseConfig);
+        const database5 = getDatabase(app);
+        const dbRef5 = ref(database, 'marathon'); 
+        let fonBeT5 = document.getElementById("m");
+        onValue(dbRef, (snapshot) => {
+            const data = snapshot.val();
+            console.log(data); 
+            fonBetData = data;
+            fonBeT5.addEventListener("click", ()=> window.location.replace(fonBetData));
+        }, (error) => {
+            console.error("ERROR: ", error);
+            document.getElementById('output').innerText = "Ошибка при загрузке данных.";
+        });
+
+        
+        const app6 = initializeApp(firebaseConfig);
+        const database6 = getDatabase(app);
+        const dbRef6 = ref(database, 'leon'); 
+        let fonBeT6 = document.getElementById("le");
+        onValue(dbRef, (snapshot) => {
+            const data = snapshot.val();
+            console.log(data); 
+            fonBetData = data;
+            fonBeT6.addEventListener("click", ()=> window.location.replace(fonBetData));
+        }, (error) => {
+            console.error("ERROR: ", error);
+            document.getElementById('output').innerText = "Ошибка при загрузке данных.";
+        });
+
+        let item1 = document.getElementById("fonbet");
+        let item2 = document.getElementById("pari");
+        let item3 = document.getElementById("bb");
+        let item4 = document.getElementById("liga");
+        let item5 = document.getElementById("marat");
+        let item6 = document.getElementById("leon");
+
+        const finderT = document.getElementById("f");
+        const inputer = document.getElementById("inter");
+        const all = document.getElementById("all");
+        const alls = document.getElementById("alls");
+        inputer.addEventListener("input", toSearchMode);
+        
+        let Items_arr = 
+        [["FONBET", item1],
+         ["PARI", item2],
+          ["BET BOOM", item3],
+           ["LIGA STAVOK", item4],
+        ["MARATHON BET", item5],
+        ["LEON", item6]];
+
+        all.addEventListener("click", ()=>{
+            inputer.value = "";
+            toSearchMode();
+        });
+        alls.addEventListener("click", ()=>{
+            inputer.value = "ALL";
+            toSearchMode();
+        });
+
+        StartLoadScene();
+
+        function StartLoadScene()
+        {
+            inputer.style.width = "90%";
+            all.style.display = "none";
+            alls.style.display = "none";
+            finderT.style.display = "none";
+        }
+
+
+        function toSearchMode()
+        {
+            if (inputer.value.length <= 0){
+                StartLoadScene();
+            }
+            else{
+                inputer.style.width = "45%";
+                finderT.style.display = "block";
+                all.style.display = "block";
+                alls.style.display = "block";
+            }
+            RecalculateSercher(inputer.value);
+        }
+
+        function RecalculateSercher(serch_text)
+        {
+            let controller = false;
+            for(let i = 0; i < Items_arr.length; i += 1){
+                if(Items_arr[i][0].startsWith(serch_text) || serch_text == "ALL"){
+                    Items_arr[i][1].style.display = "block";
+                    Items_arr[i][1].style.display = "flex";
+                }
+                else{
+                    Items_arr[i][1].style.display = "none"
+                }
+            }
+        }
+    </script>
+</body>
+</html>
